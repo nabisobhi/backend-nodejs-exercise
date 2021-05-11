@@ -39,13 +39,16 @@ export default class FormatTextProcessor implements ITextProcessor {
 
     private extractNextLine(paragraph: string, currentParagraphPosition: number) {
         let endOfSubstring = currentParagraphPosition + this.lineWidth;
-        if (endOfSubstring > paragraph.length) {
+        if (endOfSubstring >= paragraph.length) {
             endOfSubstring = paragraph.length;
         }
         else {
-            let endOfLine = paragraph.lastIndexOf(" ", endOfSubstring + 1);
-            if (endOfLine > 0) {
-                endOfSubstring = endOfLine;
+            if(paragraph[endOfSubstring] != ' ') {
+                //find the position of last word
+                let endOfLine = paragraph.lastIndexOf(" ", endOfSubstring);
+                if (endOfLine > 0) {
+                    endOfSubstring = endOfLine;
+                }
             }
         }
         return paragraph.substring(currentParagraphPosition, endOfSubstring);
