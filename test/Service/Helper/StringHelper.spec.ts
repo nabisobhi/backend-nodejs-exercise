@@ -9,9 +9,4 @@ describe("String helper test cases", () => {
         const testMethod = () => StringHelper.GetRepeatitionOfString(-1, "123");
         expect(testMethod).toThrow(RangeError)
     })
-    ,
-    it('n is zero', () => {
-        const testMethod = () => StringHelper.GetRepeatitionOfString(0, "123");
-        expect(testMethod).toThrow(RangeError)
-    })
 })
